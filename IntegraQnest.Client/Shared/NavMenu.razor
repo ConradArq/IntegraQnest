@@ -1,0 +1,65 @@
+﻿<div class="sidebar-menu">
+    <div class="top-row ps-3 navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">IntegraQnest</a>
+            <button title="Toggle menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="@NavMenuCssClass nav-scrollable">
+        <nav class="flex-column">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <span class="nav-link font-weight-bold">AI</span>
+                <NavLink class="nav-link ms-3" href="/chatbot">Chatbot (RAG)</NavLink>
+                <NavLink class="nav-link ms-3" href="/face-recognition">Face Recognition</NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <span class="nav-link font-weight-bold">Authentication</span>
+                <NavLink class="nav-link ms-3" href="/sso-login">SSO Login</NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <span class="nav-link font-weight-bold">Integrations</span>
+                <NavLink class="nav-link ms-3" href="/slack">Slack Alerts</NavLink>
+                <NavLink class="nav-link ms-3" href="/crm">CRM (Mocked)</NavLink>
+                <NavLink class="nav-link ms-3" href="/payments">Payments</NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <span class="nav-link font-weight-bold">Messaging</span>
+                <NavLink class="nav-link ms-3" href="/email-processing">Email Processor</NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <span class="nav-link font-weight-bold">Observability</span>
+                <NavLink class="nav-link ms-3" href="/profiling">Profiling Tools</NavLink>
+                <NavLink class="nav-link ms-3" href="/health">Health Checks</NavLink>
+                <NavLink class="nav-link ms-3" href="/status">User Status</NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <span class="nav-link font-weight-bold">Testing</span>
+                <NavLink class="nav-link ms-3" href="/tests">Test Harness</NavLink>
+            </div>
+        </nav>
+    </div>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

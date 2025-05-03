@@ -1,0 +1,13 @@
+﻿@page "/status"
+
+@using IntegraQnest.Client.Components.Status
+@inject IntegraQnest.Client.Services.UserState UserState
+
+<h3>User Status</h3>
+
+<UserStatusSelector @bind-Status="UserState.Status" />
+
+<p class="mt-2">
+    <NotificationDot />
+    Current status: <strong>@UserState.Status</strong>
+</p>

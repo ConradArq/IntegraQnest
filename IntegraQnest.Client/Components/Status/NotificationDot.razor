@@ -1,0 +1,23 @@
+﻿@inject IntegraQnest.Client.Services.UserState UserState
+
+<span class="dot @GetDotColor()" title="@UserState.Status"></span>
+
+@code {
+    protected override void OnInitialized()
+    {
+        UserState.OnChange += StateHasChanged;
+    }
+
+    private string GetDotColor() => UserState.Status switch
+    {
+        "Online" => "green",
+        "Away" => "yellow",
+        "DND" => "red",
+        _ => "gray"
+    };
+
+    public void Dispose()
+    {
+        UserState.OnChange -= StateHasChanged;
+    }
+}

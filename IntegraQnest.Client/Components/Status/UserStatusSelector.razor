@@ -1,0 +1,17 @@
+﻿<select class="form-select" value="@Status" @onchange="OnStatusChanged">
+    <option value="Online">Online</option>
+    <option value="Away">Away</option>
+    <option value="DND">Do Not Disturb</option>
+</select>
+
+@code {
+    [Parameter] public string Status { get; set; } = "Online";
+    [Parameter] public EventCallback<string> StatusChanged { get; set; }
+
+    private async Task OnStatusChanged(ChangeEventArgs e)
+    {
+        var newValue = e.Value?.ToString() ?? "Online";
+        Status = newValue;
+        await StatusChanged.InvokeAsync(newValue);
+    }
+}
