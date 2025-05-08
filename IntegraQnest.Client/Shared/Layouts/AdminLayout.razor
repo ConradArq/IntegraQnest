@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+@inject AuthenticationStateProvider AuthProvider
+@inject NavigationManager Navigation
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <div class="admin-layout">
+            <NavMenu />
+            <div class="main-content">
+                @Body
+            </div>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <p>Redirecting...</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (!user.Identity?.IsAuthenticated ?? true || !user.IsInRole("Admin"))
+        {
+            Navigation.NavigateTo("/login", forceLoad: true);
+        }
+    }
+}

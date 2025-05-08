@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using IntegraQnest.Client.Pages._Base;
+using Microsoft.AspNetCore.Components;
 using Radzen;
 using System.Net.Http.Json;
 
 namespace IntegraQnest.Client.Pages
 {
-    public partial class Health
+    public partial class Health : ProtectedPageBase
     {
-        [Inject]
-        public IHttpClientFactory ClientFactory { get; set; } = default!;
+        [Inject] public IHttpClientFactory ClientFactory { get; set; } = default!;
 
-        [Inject]
-        public NotificationService NotificationService { get; set; } = default!;
+        [Inject] public NotificationService NotificationService { get; set; } = default!;
 
         private string? status;
+        protected override string RequiredRole => "Admin";
 
         private async Task CheckHealth()
         {

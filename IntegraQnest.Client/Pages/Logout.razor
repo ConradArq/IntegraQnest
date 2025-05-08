@@ -1,0 +1,14 @@
+﻿@inject ILocalStorageService LocalStorage
+@inject JwtAuthStateProvider AuthProvider
+@inject NavigationManager NavManager
+
+<button @onclick="Handle">Logout</button>
+
+@code {
+    async Task Handle()
+    {
+        await LocalStorage.RemoveItemAsync(JwtAuthStateProvider.TokenKey);
+        await AuthProvider.NotifyUserLogoutAsync();
+        NavManager.NavigateTo("/");
+    }
+}

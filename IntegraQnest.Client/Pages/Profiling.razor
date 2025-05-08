@@ -1,0 +1,28 @@
+﻿@* @page "/profiling"
+@layout AdminLayout
+@inject IJSRuntime JS
+@inject ILogger<Profiling> Logger
+
+<h3>🛠️ Profiling Tools</h3>
+
+<p>This section displays advanced metrics for diagnostics and performance.</p>
+
+<div id="react-widget-root" class="mt-4"></div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await JS.InvokeVoidAsync("import", "/js/widget.js");
+                await JS.InvokeVoidAsync("renderReactWidget", "#react-widget-root");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "React widget failed to load.");
+            }
+        }
+    }
+} *@

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "./wwwroot/js",
+    "rootDir": "./react-app",
+    "strict": true
+  },
+  "include": ["react-app/**/*"]
+}

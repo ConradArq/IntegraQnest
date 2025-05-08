@@ -1,0 +1,16 @@
+﻿@using IntegraQnest.Client.Providers
+@inject ILocalStorageService LocalStorage
+@inject JwtAuthStateProvider AuthProvider
+@inject NavigationManager NavManager
+
+<button @onclick="Handle">Login</button>
+
+@code {
+    async Task Handle()
+    {
+        var token = string.Empty; // TODO: Get from Auth server
+        await LocalStorage.SetItemAsync("yourTokenKey", token);
+        await AuthProvider.NotifyUserAuthenticationAsync(token);
+        NavManager.NavigateTo("/");
+    }
+}
