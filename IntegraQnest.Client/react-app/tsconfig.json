@@ -4,10 +4,11 @@
     "jsx": "react-jsx",
     "module": "esnext",
     "moduleResolution": "node",
+	"rootDir": "./src",
     "outDir": "../wwwroot/js",
-    "rootDir": "./react-app",
     "strict": true,
-	"allowSyntheticDefaultImports": true
+	  "esModuleInterop": true,
+	  "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": ["../wwwroot/js", "node_modules"]

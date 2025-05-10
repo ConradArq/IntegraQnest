@@ -1,5 +1,5 @@
-﻿@* @page "/profiling"
-@layout AdminLayout
+﻿@page "/profiling"
+@layout IntegraQnest.Client.Shared.Layouts.AdminLayout
 @inject IJSRuntime JS
 @inject ILogger<Profiling> Logger
 
@@ -16,8 +16,7 @@
         {
             try
             {
-                await JS.InvokeVoidAsync("import", "/js/widget.js");
-                await JS.InvokeVoidAsync("renderReactWidget", "#react-widget-root");
+                await JS.InvokeVoidAsync("import", "/react-widget/index-BNmNuTQ8.js");
             }
             catch (Exception ex)
             {
@@ -25,4 +24,4 @@
             }
         }
     }
-} *@
+}

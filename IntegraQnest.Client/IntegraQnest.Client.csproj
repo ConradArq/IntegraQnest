@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="react-app\index.tsx" />
+    <Compile Remove="react-app\components\**" />
+    <Content Remove="react-app\components\**" />
+    <EmbeddedResource Remove="react-app\components\**" />
+    <None Remove="react-app\components\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,11 +25,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IntegraQnest.Shared\IntegraQnest.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="react-app\components\ProfilingWidget.tsx" />
-    <TypeScriptCompile Include="react-app\index.tsx" />
   </ItemGroup>
 
 </Project>
